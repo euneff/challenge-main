@@ -96,6 +96,7 @@ function App() {
                     <Route path="/create-challenge" element={<CreateChallengePage />} />
                     <Route path="/my-challenge" element={<MyChallenge />} />
                     <Route path="/review" element={<Review />} />
+                    <Route path="/adminpage/minfo/:challengeId" element={<Minfo />} />
 
                     <Route path="/adminpage" element={<PrivateRoute isLoggedIn={isLoggedIn}><AdminPage /></PrivateRoute>}>
                         <Route path="qanda" element={<QandA />} />
@@ -105,7 +106,6 @@ function App() {
                         <Route path="capproval" element={<Capproval/>} />
                         <Route path="adminnav" element={<AdminNav/>}/>
                         <Route path="money" element={<Money/>}/>
-                        <Route path="minfo" element={<Minfo/>}/>
                     </Route>
 
                     {/* 보호된 라우트 설정 */}

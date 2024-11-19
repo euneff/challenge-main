@@ -1,128 +1,106 @@
+/* 전체 컨테이너 */
 .board-container {
-  width: 80%;
-  margin: auto;
-  margin-bottom: 50px;
-  text-align: center;
-  display:block;
-  justify-content: center;
-  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-h1 {
+.f{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 제목 스타일 */
+.board-container h1 {
+  text-align: center;
   font-size: 24px;
-  font-weight: bold;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.post-table {
+/* 테이블 스타일 */
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.post-table th, .post-table td {
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+th, td {
   padding: 12px;
-  border-bottom: 1px solid #ddd; /* 가로선만 보이도록 설정 */
-}
-
-.post-table th {
-  font-weight: bold;
-  text-align: left;
-}
-
-.post-table th:first-child, .post-table td:first-child {
-  text-align: left;
-  width: 10%;
-}
-
-.post-table td:nth-child(2) {
-  cursor: pointer;
-}
-
-.post-table .createdAt {
   text-align: center;
-  padding: 0;
-  margin: 0;
-  width: auto;
-}
-.post-table .author {
-  text-align: right;
-  padding: 0;
-  margin: 0;
+  border: 1px solid #ddd;
 }
 
-.post-row:hover td:nth-child(2) {
-  color: #333;
+tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
 .no-posts-message {
   text-align: center;
+  color: #666;
+  font-size: 16px;
   padding: 20px;
 }
 
+/* 확인 버튼 */
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button.active {
+  background-color: #28a745;
+  color: white;
+}
+
+/* 페이지네이션 */
 .pagination {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 10px;
 }
 
 .pagination button {
-  padding: 8px 12px;
-  border: none;
-  background-color: #f4f2f2;
-  cursor: pointer;
-  width:30px;
-  height: 30px;
-}
-
-.pagination .active {
-  background-color: #333;
-  color: white;
-}
-
-.write-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width:100px;
-  height: 40px;
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 500px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  color: #333;
+.pagination button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
 }
