@@ -79,7 +79,7 @@ const PostDetail = ({ userName }) => {
 
         const togglePostLike = async () => {
             try {
-                await axios.post(`${host}like/${post.id}`, {}, {
+                await axios.post(`${host}like/${post.votes}`, {}, {
                     headers: {
                         'Content-Type': 'application/json',
                         'auth-token': token,
@@ -112,7 +112,7 @@ const PostDetail = ({ userName }) => {
                     }
                 }
             );
-
+            <button onClick={handleAddComment} className="add-comment-button">댓글 추가</button>
             setComments([ ...comments,response.data]);
             setNewComment('');
             window.location.reload()
@@ -208,7 +208,7 @@ const PostDetail = ({ userName }) => {
                         placeholder="댓글 입력하기"
                         className="comment-input"
             />
-            {/*<button onClick={handleAddComment} className="add-comment-button">댓글 추가</button>*/}
+            <button onClick={handleAddComment} className="add-comment-button">댓글 추가</button>
             
             </div>
         </div>
@@ -234,29 +234,31 @@ const PostDetail = ({ userName }) => {
                         <span className="comment-date">{comment.createdAt}</span>
                     </div>
                 </div>
-                <div className="comment-body">
-                    <p className="comment-content">{comment.content}</p>
-                </div>
-                <div className="comment-actions">
-                    {/* 좋아요 버튼 */}
-                    <button
-                        className="like-button"
-                        onClick={() => toggleLike(comment.commentId)}
-                    >
-                        <img
-                            src={likedComments.includes(comment.commentId) ? heart1 : heart2}
-                            alt="like"
-                            className="like-icon"
-                        />
-                    </button>
-                    {storedUser?.userId === comment.userId && (
+                <div ClassName="flex">
+                    <div className="comment-body">
+                        <p className="comment-content">{comment.content}</p>
+                    </div>
+                    <div className="comment-actions">
+                        {/* 좋아요 버튼 */}
                         <button
-                            onClick={() => handleDeleteComment(comment.commentId)}
-                            className="delete-comment-button"
+                            className="like-button"
+                            onClick={() => toggleLike(comment.commentId)}
                         >
-                            삭제
+                            <img
+                                src={likedComments.includes(comment.commentId) ? heart1 : heart2}
+                                alt="like"
+                                className="like-icon"
+                            />
                         </button>
-                    )}
+                        {storedUser?.userId === comment.userId && (
+                            <button
+                                onClick={() => handleDeleteComment(comment.commentId)}
+                                className="delete-comment-button"
+                            >
+                                삭제
+                            </button>
+                        )}
+                    </div>
                 </div>
             </li>
     ))}

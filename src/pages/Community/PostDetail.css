@@ -233,3 +233,8 @@
     height: 100%;
     object-fit: contain;
 }
+
+.flex{
+    display: flex;
+    flex-direction: row;
+}
