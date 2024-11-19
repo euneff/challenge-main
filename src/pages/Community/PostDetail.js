@@ -226,39 +226,39 @@ const PostDetail = ({ userName }) => {
                 </li>
             ))} */}
 
-{comments.map((comment) => (
-        <li key={comment.commentId} className="comment-item">
-            <div className="comment-header">
-                <div className="comment-info">
-                    <span className="comment-nickName">{comment.nickName}</span>
-                    <span className="comment-date">{comment.createdAt}</span>
+        {comments.map((comment) => (
+            <li key={comment.commentId} className="comment-item">
+                <div className="comment-header">
+                    <div className="comment-info">
+                        <span className="comment-nickName">{comment.nickName}</span>
+                        <span className="comment-date">{comment.createdAt}</span>
+                    </div>
                 </div>
-            </div>
-            <div className="comment-body">
-                <p className="comment-content">{comment.content}</p>
-            </div>
-            <div className="comment-actions">
-                {/* 좋아요 버튼 */}
-                <button
-                    className="like-button"
-                    onClick={() => toggleLike(comment.commentId)}
-                >
-                    <img
-                        src={likedComments.includes(comment.commentId) ? heart1 : heart2}
-                        alt="like"
-                        className="like-icon"
-                    />
-                </button>
-                {storedUser?.userId === comment.userId && (
+                <div className="comment-body">
+                    <p className="comment-content">{comment.content}</p>
+                </div>
+                <div className="comment-actions">
+                    {/* 좋아요 버튼 */}
                     <button
-                        onClick={() => handleDeleteComment(comment.commentId)}
-                        className="delete-comment-button"
+                        className="like-button"
+                        onClick={() => toggleLike(comment.commentId)}
                     >
-                        삭제
+                        <img
+                            src={likedComments.includes(comment.commentId) ? heart1 : heart2}
+                            alt="like"
+                            className="like-icon"
+                        />
                     </button>
-                )}
-            </div>
-        </li>
+                    {storedUser?.userId === comment.userId && (
+                        <button
+                            onClick={() => handleDeleteComment(comment.commentId)}
+                            className="delete-comment-button"
+                        >
+                            삭제
+                        </button>
+                    )}
+                </div>
+            </li>
     ))}
         </ul>
 
