@@ -40,7 +40,7 @@ const Community = () => {
 
     return (
         <div className="board-container">
-            <h1>자유게시판</h1>
+            <h1 className="t">자유게시판</h1>
             <table className="post-table">
                 <thead>
                     <tr>
