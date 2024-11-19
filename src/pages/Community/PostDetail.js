@@ -3,8 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './PostDetail.css';
 import host from "../../api";
+import heart1 from '../../assets/heart1.png';
+import heart2 from '../../assets/heart2.png';
 
 const PostDetail = ({ userName }) => {
+    const [isLiked, setIsLiked] = useState(false); // 좋아요 상태
+    const [likedComments, setLikedComments] = useState([]);
     const { id } = useParams();
     const [post, setPost] = useState({
         nickName: '',
@@ -21,6 +25,21 @@ const PostDetail = ({ userName }) => {
     const navigate = useNavigate();
     const token = localStorage.getItem('auth-token');
     const storedUser = JSON.parse(localStorage.getItem('user'));
+
+     // 좋아요 상태 토글 함수
+     {/*const toggleLike = () => {
+        setIsLiked(!isLiked);
+    }; */}
+
+    const toggleLike = (commentId) => {
+        if (likedComments.includes(commentId)) {
+            // 이미 좋아요를 누른 상태라면 해제
+            setLikedComments(likedComments.filter((id) => id !== commentId));
+        } else {
+            // 좋아요 추가
+            setLikedComments([...likedComments, commentId]);
+        }
+    };
 
     useEffect(() => {
         console.log(storedUser);
@@ -55,6 +74,20 @@ const PostDetail = ({ userName }) => {
                 setComments(mappedComments);
             } catch (error) {
                 console.error("Error fetching comments:", error);
+            }
+        };
+
+        const togglePostLike = async () => {
+            try {
+                await axios.post(`${host}like/${post.id}`, {}, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': token,
+                    }
+                });
+                setIsLiked(!isLiked);
+            } catch (error) {
+                console.error("Error toggling like:", error);
             }
         };
 
@@ -164,6 +197,7 @@ const PostDetail = ({ userName }) => {
             </div>
 
 
+        {/*댓글입력*/}
         <div className="comment-section">
             <h3>댓글 {comments.length}개</h3>
             <div className="comment-input-container">
@@ -174,12 +208,13 @@ const PostDetail = ({ userName }) => {
                         placeholder="댓글 입력하기"
                         className="comment-input"
             />
-            <button onClick={handleAddComment} className="add-comment-button">댓글 추가</button>
+            {/*<button onClick={handleAddComment} className="add-comment-button">댓글 추가</button>*/}
+            
             </div>
         </div>
 
         <ul className="comment-list">
-            {comments.map(comment => (
+            {/*{comments.map(comment => (
                 <li key={comment.commentId} className="comment-item">
                     <p>작성자: {comment.nickName}</p>
                     <p>{comment.content}</p>
@@ -189,7 +224,42 @@ const PostDetail = ({ userName }) => {
                         댓글 삭제
                     </button>
                 </li>
-            ))}
+            ))} */}
+
+{comments.map((comment) => (
+        <li key={comment.commentId} className="comment-item">
+            <div className="comment-header">
+                <div className="comment-info">
+                    <span className="comment-nickName">{comment.nickName}</span>
+                    <span className="comment-date">{comment.createdAt}</span>
+                </div>
+            </div>
+            <div className="comment-body">
+                <p className="comment-content">{comment.content}</p>
+            </div>
+            <div className="comment-actions">
+                {/* 좋아요 버튼 */}
+                <button
+                    className="like-button"
+                    onClick={() => toggleLike(comment.commentId)}
+                >
+                    <img
+                        src={likedComments.includes(comment.commentId) ? heart1 : heart2}
+                        alt="like"
+                        className="like-icon"
+                    />
+                </button>
+                {storedUser?.userId === comment.userId && (
+                    <button
+                        onClick={() => handleDeleteComment(comment.commentId)}
+                        className="delete-comment-button"
+                    >
+                        삭제
+                    </button>
+                )}
+            </div>
+        </li>
+    ))}
         </ul>
 
         <button onClick={handleBack} className="back-button">목록</button>
