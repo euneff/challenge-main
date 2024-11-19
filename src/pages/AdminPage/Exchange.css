@@ -1,0 +1,20 @@
+.approve-button{
+  margin-bottom: 30px;
+  width:55px;
+  height: 40px;
+ /* margin: 0 auto; */
+ margin-right: 10px;
+}
+
+.reject-button{
+  margin-bottom: 30px;
+  width:55px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.action-buttons{
+  display:flex;
+  flex-direction: row ;
+  
+}

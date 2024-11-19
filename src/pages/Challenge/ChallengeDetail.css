@@ -1,0 +1,83 @@
+/* 전체 컨테이너 스타일 */
+.challenge-detail {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.c{
+  display: flex;
+  font-size:10px !important ;
+}
+
+/* 제목 스타일 */
+.challenge-detail h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #3f51b5;
+}
+
+/* 텍스트 스타일 */
+.challenge-detail p {
+  font-size: 16px;
+  margin: 10px;
+  line-height: 1.5;
+}
+
+/* 강조 텍스트 */
+.challenge-detail p strong {
+  color: #333;
+  font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.enroll-button, .delete-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 16px; /* 둥근 모서리 */
+  cursor: pointer;
+  margin: 20px auto 10px; /* 버튼 간격 */
+  width: 70%; /* 버튼 너비 */
+  display: block; /* 중앙 정렬 */
+  transition: all 0.3s ease;
+} 
+
+/* 신청 버튼 색상 */
+.enroll-button {
+  background-color: #dcaec5; /* 핑크색 */
+  color: white;
+}
+
+.enroll-button:disabled {
+  background-color: #c1c1c1;
+  cursor: not-allowed;
+}
+
+/* 삭제 버튼 색상 */
+.delete-button {
+  background-color: #e53935; /* 붉은색 */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c62828;
+}
+
+/* 반응형 처리 */
+@media (max-width: 600px) {
+  .challenge-detail {
+    padding: 15px;
+  }
+
+  .enroll-button, .delete-button {
+    width: 90%;
+  }
+}

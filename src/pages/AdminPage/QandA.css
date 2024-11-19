@@ -1,0 +1,10 @@
+.enroll-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width:100px;
+  height: 40px;
+}

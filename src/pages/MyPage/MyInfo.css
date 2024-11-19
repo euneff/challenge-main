@@ -1,0 +1,93 @@
+.my-info {
+  max-width: 600px;
+  height: 500px;
+  margin: 150px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+
+}
+
+.my-info h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  margin-bottom: 70px;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /*원형으로설정*/
+  object-fit: cover;
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+}
+
+.user-info p {
+  font-size: 16px;
+  color: #252424;
+  margin: 8px 0;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #5c5d5e;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e3e3f;
+}
+
+.edit-button{
+  background-color: #edb0dd;
+  width:200px;
+  height: 50px;
+  margin: 0 auto;
+}
