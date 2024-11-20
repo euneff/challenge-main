@@ -57,17 +57,15 @@ const MyChallenges = () => {
                                 <span className="progress-text">63%</span>
                             </div>
                             <div className="challenge-info">
-                            <Link to={(`/course/${challenge.id}`)}>
-                                 <h3>{challenge.description}</h3>
-                            </Link>
-
-                                <p className="status">상태: {challenge.status} 원</p>
-                                <p className="currentStep">진행단계 : {challenge.currentStep} 원</p>
-                                <p className="userCount">참여인원: {challenge.userCount} 원</p>
+                            <Link to={(`/challenge/${challenge.challengeId}`)}>
+                                <h3>{challenge.description}</h3>
+                                <p className="status">상태: {challenge.status} </p>
+                                <p className="currentStep">진행단계 : {challenge.currentStep} 단계</p>
+                                <p className="userCount">참여인원: {challenge.userCount} 명</p>
                                 <p className="rewardAssume">예상 보상금: {challenge.rewardAssume} 원</p>
+                            </Link>
                             </div>
-
-                        </li>
+                         </li>
                     ))}
                 </ul>
             )}
