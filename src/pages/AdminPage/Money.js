@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import host from "../../api";
+import host from '../../api';
+
 
 const Money = () => {
     const navigate = useNavigate();
@@ -46,13 +47,13 @@ const Money = () => {
                 <div>로딩 중...</div>
             ) : (
                 <>
-                    <table>
+                    <table className="post-table">
                         <div className="f">
                             <thead>
                                 <tr>
-                                    <th>번호</th>
-                                    <th>챌린지</th>
-                                    <th>확인</th>
+                                    <th className='num'>번호</th>
+                                    <th className='ch'>챌린지</th>
+                                    <th className='co'>확인</th>
                                 </tr>
                             </thead>
                         </div>

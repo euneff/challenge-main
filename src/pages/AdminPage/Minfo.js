@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import host from "../../api";
-import styles from "./Minfo.module.css"; // CSS 모듈 import
+import styles from "./Minfo.module.css"; 
 
 const Minfo = () => {
   const location = useLocation();
@@ -48,7 +48,7 @@ const Minfo = () => {
               <li key={index}>{index + 1}. {participant.name}</li>
             ))
           ) : (
-            <li>참가자가 없습니다.</li>
+            <li>성공자가 없습니다.</li>
           )}
         </ul>
       </div>

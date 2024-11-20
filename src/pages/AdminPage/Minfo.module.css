@@ -4,7 +4,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 70px auto;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -25,6 +25,22 @@
   margin: 5px 0;
   color: #555;
   font-size: 14px;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+}
+
+.post-table th, .post-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd; /* 가로선만 보이도록 설정 */
+}
+
+.post-table th {
+  font-weight: bold;
+  text-align: left;
 }
 
 /* 참가자 명단 컨테이너 스타일 */

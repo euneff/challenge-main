@@ -38,7 +38,7 @@ const MyChallenges = () => {
                 <p>신청한 도전이 없습니다.</p>
             ) : (
                 <ul>
-                    {myChallenges.map(challenge => (
+                    {/*{myChallenges.map(challenge => (
                         <li key={challenge.id}>
                             <Link to={`/challenge/${challenge.challengeId}`}>
                                 <h3>{challenge.description}</h3>
@@ -47,6 +47,26 @@ const MyChallenges = () => {
                                 <p>참여 인원: {challenge.userCount} / {challenge.maxHead}</p>
                                 <p>예상 보상: {challenge.rewardAssume}</p>
                             </Link>
+                        </li>
+                    ))} */}
+
+                    {myChallenges.map(challenge => (
+                        <li key={challenge.id}>
+                            <div className="timeline"></div>
+                            <div className="progress-circle">
+                                <span className="progress-text">63%</span>
+                            </div>
+                            <div className="challenge-info">
+                            <Link to={(`/course/${challenge.id}`)}>
+                                 <h3>{challenge.description}</h3>
+                            </Link>
+
+                                <p className="status">상태: {challenge.status} 원</p>
+                                <p className="currentStep">진행단계 : {challenge.currentStep} 원</p>
+                                <p className="userCount">참여인원: {challenge.userCount} 원</p>
+                                <p className="rewardAssume">예상 보상금: {challenge.rewardAssume} 원</p>
+                            </div>
+
                         </li>
                     ))}
                 </ul>
