@@ -1,4 +1,6 @@
 .nav {
+    display: flex;
+    flex-direction: row;
     position: relative;
     z-index: 1;
     padding: 15px 0;
@@ -7,9 +9,23 @@
 }
 
 .container {
+    margin-left: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    margin-left: 800px;
+    margin-right: 210px;
+}
+
+.menu{
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 30px;;
 }
 
 ul.menu {

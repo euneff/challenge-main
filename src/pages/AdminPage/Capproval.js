@@ -107,7 +107,7 @@ const Capproval = () => {
                                 <button
                                     onClick={() => handleCardClick(challengeList.id)}>
                                         확인
-                                    </button>
+                                </button>
                             </td>
                         </tr>
                     ))}

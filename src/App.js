@@ -40,6 +40,7 @@ import Recharge from "./pages/AdminPage/Recharge";
 import Money from "./pages/AdminPage/Money";
 import Minfo from "./pages/AdminPage/Minfo";
 import Cauth from "./pages/AdminPage/Cauth";
+import SubNav from "./components/SubNav";
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
                     <Route path="/create-challenge" element={<CreateChallengePage />} />
                     <Route path="/my-challenge" element={<MyChallenge />} />
                     <Route path="/review" element={<Review />} />
+                    <Route path="/subnav" element={<SubNav />} />
                     <Route path="/adminpage/minfo/:challengeId" element={<Minfo />} />
                     <Route path="/adminpage/cauth/:challengeId" element={<Cauth />} />
 

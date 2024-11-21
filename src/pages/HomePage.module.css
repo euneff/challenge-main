@@ -1,4 +1,4 @@
-.bg {
+/* .bg {
     position: absolute;
     top: 0;
     right: 0;
@@ -13,12 +13,13 @@
                     #ebebeb 78%,
                     #f9f9f9 78%
             );
-}
+} */
 
 .container {
     display: flex;
     margin: 120px auto 226px;
 }
+
 
 .texts {
     display: flex;

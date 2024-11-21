@@ -13,10 +13,11 @@ function getLinkStyle({ isActive }) {
 function Nav({ isLoggedIn, onLogout }) {
     return (
         <div className={styles.nav}>
-            <Container className={styles.container}>
-                <Link to="/">
-                    <img src={Clogo} alt="Challengers Logo" />
+            <Link to="/">
+                    <img src={Clogo} alt="Challengers Logo" className={styles.logo} />
                 </Link>
+            <Container className={styles.container}>
+                
                 <ul className={styles.menu}>
                 {!isLoggedIn ? (
                     <>

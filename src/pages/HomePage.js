@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Lined from '../components/Lined';
 import styles from './HomePage.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import SubNav from '../components/SubNav'; 
 
 function HomePage() {
     const navigate = useNavigate(); // useNavigate 훅 호출
