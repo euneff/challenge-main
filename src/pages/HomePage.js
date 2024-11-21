@@ -21,7 +21,10 @@ function HomePage() {
                         뿌듯함과 성취감 뿐만아니라 보상금까지 !!!
                     </p>
                     <div>
-                        <Button onClick={() => navigate('/review')}>도전자들 후기</Button>
+                        <Button onClick={() => navigate('/review')}
+                            className={styles.button}>
+                            도전자들 후기
+                        </Button>
                     </div>
                 </div>
             </Container>

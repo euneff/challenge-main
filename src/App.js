@@ -39,6 +39,7 @@ import AdminNav from "./pages/AdminPage/AdminNav";
 import Recharge from "./pages/AdminPage/Recharge";
 import Money from "./pages/AdminPage/Money";
 import Minfo from "./pages/AdminPage/Minfo";
+import Cauth from "./pages/AdminPage/Cauth";
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
                     <Route path="/my-challenge" element={<MyChallenge />} />
                     <Route path="/review" element={<Review />} />
                     <Route path="/adminpage/minfo/:challengeId" element={<Minfo />} />
+                    <Route path="/adminpage/cauth/:challengeId" element={<Cauth />} />
 
                     <Route path="/adminpage" element={<PrivateRoute isLoggedIn={isLoggedIn}><AdminPage /></PrivateRoute>}>
                         <Route path="qanda" element={<QandA />} />
@@ -89,6 +91,7 @@ function App() {
                         <Route path="capproval" element={<Capproval/>} />
                         <Route path="adminnav" element={<AdminNav/>}/>
                         <Route path="money" element={<Money/>}/>
+                     
                     </Route>
 
                     {/* 보호된 라우트 설정 */}

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 const Capproval = () => {
+    const navigate = useNavigate();
     const [challengeList, setChallengeList] = useState([]);
     const token = localStorage.getItem('auth-token');
 
@@ -25,6 +26,11 @@ const Capproval = () => {
         };
         fetchChallenge();
     }, [token]);
+
+    const handleCardClick = (id) => {
+        navigate(`/adminpage/cauth/${id}`);
+        console.log(id);
+    };
 
     return (
         <div className="admin-section">
@@ -98,7 +104,10 @@ const Capproval = () => {
                             <td>{challengeList.stepsId}</td>
                             <td>{challengeList.nickname}</td>
                             <td>
-                                <button>확인</button>
+                                <button
+                                    onClick={() => handleCardClick(challengeList.id)}>
+                                        확인
+                                    </button>
                             </td>
                         </tr>
                     ))}

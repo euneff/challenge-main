@@ -34,14 +34,6 @@
     line-height: 1.39;
 }
 
-.description {
-    margin: 15px 0 25px;
-    font-size: 18px;
-    line-height: 1.61;
-    color: #878787;
-    text-align: left;
-    letter-spacing: normal;
-}
 
 .figure {
     flex: 1 1;
@@ -52,6 +44,11 @@
 .figure img {
     width: 100%;
     max-width: 418px;
+}
+
+.button{
+    width:200px;
+    height: 55px;
 }
 
 @media (max-width: 840px) {
