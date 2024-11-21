@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Capproval.css';
 import host from "../../api";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const ChallengeApproval = () => {
+const Capproval = () => {
     const [challengeList, setChallengeList] = useState([]);
-    const [selectedCourse, setSelectedCourse] = useState(null);
-    const [courseUsers, setCourseUsers] = useState([]);
     const token = localStorage.getItem('auth-token');
 
     useEffect(() => {
@@ -18,17 +17,8 @@ const ChallengeApproval = () => {
                         'auth-token': token,
                     }
                 });
-                const mappedChallenge = response.data.result.map(challenge => {
-                    const date = new Date(challenge.createdAt);
-                    const formattedDate = `${date.getMonth() + 1}.${date.getDate()}`;
-                    return {
-                        id: challenge.pid,
-                        contents: challenge.contents,
-                        nickname: challenge.nickname,
-                        createdAt: formattedDate,
-                    };
-                });
-                setChallengeList(mappedChallenge);
+                setChallengeList(response.data.result);
+                console.log(challengeList);
             } catch (error) {
                 console.error("도전 목록을 가져오는 중 오류 발생:", error);
             }
@@ -36,53 +26,11 @@ const ChallengeApproval = () => {
         fetchChallenge();
     }, [token]);
 
-    // 특정 도전의 사용자 목록 가져오기
-    const fetchCourseUsers = async (courseId) => {
-        try {
-            const response = await axios.get(`${host}admin/challengeauth/${courseId}/users`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'auth-token': token,
-                }
-            });
-            setCourseUsers(response.data.users);
-        } catch (error) {
-            console.error("사용자 목록을 가져오는 중 오류 발생:", error);
-        }
-    };
-
-    // 카드 클릭 시 사용자 목록 표시
-    const handleCardClick = (courseId) => {
-        const selected = challengeList.find((course) => course.id === courseId);
-        setSelectedCourse(selected);
-        fetchCourseUsers(courseId); // 사용자 목록 불러오기
-    };
-
-    // 사용자의 단계 승인 처리
-    const handleApproveStep = async (userId, step) => {
-        try {
-            await axios.post(
-                `${host}admin/users/${userId}/steps/${step.step}/approve`,
-                { status: 'complete' },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'auth-token': token,
-                    }
-                }
-            );
-            alert(`사용자 ${userId}의 ${step.step}단계 인증이 승인되었습니다.`);
-            // 승인 후 사용자 목록 다시 불러오기
-            fetchCourseUsers(selectedCourse.id);
-        } catch (error) {
-            console.error('승인 요청 중 오류 발생:', error);
-        }
-    };
-
     return (
         <div className="admin-section">
-            <h2>도전 목록</h2>
-            <div className="courses-grid">
+            <h2>챌린지 인증글 대기 리스트</h2>
+                <>
+            {/*<div className="courses-grid">
                 {challengeList.map((challenge) => (
                     <div
                         key={challenge.id}
@@ -100,10 +48,11 @@ const ChallengeApproval = () => {
                         <p className="course-description">도전!</p>
                     </div>
                 ))}
-            </div>
+            </div> */}
 
             {/* 도전 선택 시 사용자 목록 및 승인/거부 기능 표시 */}
-            {selectedCourse && (
+            
+            {/*{selectedCourse && (
                 <div className="course-users">
                     <h3>{selectedCourse.contents} - 사용자 목록</h3>
                     <ul>
@@ -128,9 +77,36 @@ const ChallengeApproval = () => {
                         ))}
                     </ul>
                 </div>
+                
             )}
+            */}
+
+            <table className = "post-table">
+                <div className="f">
+                    <thead>
+                        <tr>
+                            <th className="description">챌린지명 </th>
+                            <th className="ninkname">성공자</th>
+                            <th className="stepsId">단계</th>
+                        </tr>
+                    </thead>
+                </div>
+                <tbody>
+                    {challengeList.map((challengeList)=>(
+                        <tr>
+                            <td>{challengeList.description}</td>
+                            <td>{challengeList.stepsId}</td>
+                            <td>{challengeList.nickname}</td>
+                            <td>
+                                <button>확인</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            </>
         </div>
     );
 };
 
-export default ChallengeApproval;
+export default Capproval;

@@ -52,7 +52,7 @@ const MyChallenges = () => {
 
                     {myChallenges.map(challenge => (
                         <li key={challenge.id}>
-                            <div className="timeline"></div>
+                          
                             <div className="progress-circle">
                                 <span className="progress-text">63%</span>
                             </div>

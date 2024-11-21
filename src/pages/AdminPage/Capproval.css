@@ -21,6 +21,26 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.post-table .discription {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+
+  .post-table .ninkname {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
+
+  .post-table .stepsId {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: auto;
+  }
 /* 닫기 버튼 */
 .close-button {
     margin-top: 20px;

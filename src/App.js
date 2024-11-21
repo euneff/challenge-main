@@ -47,23 +47,6 @@ function App() {
     const [parsed, setParsed] = useState(() => JSON.parse(localStorage.getItem('user')));
     const [challenges, setChallenges] = useState([]);
 
-    useEffect(() => {
-        const fetchChallenges = async () => {
-            try {
-                const response = await axios.get(`${host}challenge/list`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                setChallenges(response.data);
-            } catch (error) {
-                console.error("Error fetching challenges data:", error);
-            }
-        };
-
-        fetchChallenges();
-    }, []);
-
     const handleLogin = (user) => {
         setIsLoggedIn(true);
         setUserName(user.name);
