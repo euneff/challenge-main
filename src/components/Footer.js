@@ -23,7 +23,6 @@ function Footer() {
                     <li>주소 | 전북특별자치도 익산시 익산대로  </li>
                 </ul>
                 <div className={styles.icons}>
-                    <img src={Clogog} alt="Challengers logo" />
                     <div className={styles.sns}>
                         <img src={facebookIcon} alt="facebook icon" />
                         <img src={twitterIcon} alt="twitter icon" />

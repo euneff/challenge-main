@@ -35,23 +35,13 @@ const Cauth = () => {
       {/* 챌린지 정보 */}
       <div className={styles["challenge-info"]}>
         <h2>챌린지 인증 대기 리스트</h2>
-        <p>챌린지: {posts.description}</p>
-        <p>도전자: {posts.userId}</p>
+        <h3>1단계</h3>
+        <h3>2단계</h3>
+        <h3>3단계</h3>
+        {/*<p>도전자: {posts.ninkname}</p> */}
       </div>
 
-      {/* 등록 명단 */}
-      <div className={styles["participants-container"]}>
-        <h3>성공자 명단</h3>
-        <ul>
-          {participants.length > 0 ? (
-            participants.map((participant, index) => (
-              <li key={index}>{index + 1}. {participant.name}</li>
-            ))
-          ) : (
-            <li>성공자가 없습니다.</li>
-          )}
-        </ul>
-      </div>
+
 
       {/* 버튼 */}
       <div className={styles["button-container"]}>

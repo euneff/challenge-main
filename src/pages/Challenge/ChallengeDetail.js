@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './ChallengeDetail.css';
+import styles from './ChallengeDetail.css';
 import host from "../../api";
 import Review from "../Review";
 
@@ -43,8 +43,6 @@ const ChallengeDetail = () => {
                 if (storedUser === response.data.result[0].userId) {
                     setIsAuthor(true);
                 }
-
-                console.log(isAuthor);
             } catch (error) {
                 console.error("Error fetching challenge details:", error);
             } finally {
@@ -101,27 +99,32 @@ const ChallengeDetail = () => {
 
     return (
         <>
-        <div className="challenge-detail">
-            <h2>{challenge.description}</h2>
-            <div className="c">
-                <p><strong>조회수:</strong> {challenge.views}</p>
-                <p><strong>참가비:</strong> {challenge.participationFee}</p>
+            <div className={styles.challengeDetail}>
+                <h2>{challenge.description}</h2>
+                <p><strong>{challenge.status === 0
+                    ? "참여비"
+                    : "보상금"}</strong> {challenge.status === 0
+                    ? `${challenge.participationFee ? challenge.participationFee.toLocaleString() : "0"}원`
+                    : `${challenge.reward ? challenge.reward.toLocaleString() : "보증금 없음"}원`}</p>
                 <p><strong>참여 인원:</strong> {challenge.maxHead}</p>
+                <p><strong>진행 상태:</strong> {status}</p>
+                <p><strong>도전 기간:</strong> {challenge.startDate} - {challenge.endDate}</p>
+                <p><strong>현재 단계:</strong> {challenge.totalStep}</p>
+                <div className={styles.buttonGroup}>
+                    {isAuthor && (
+                        <>
+                            <button onClick={handleDelete} className={styles.deleteButton}>삭제</button>
+                            <button onClick={() => navigate(`/editchallenge/${challenge.id}`)} className={styles.editButton}>수정</button>
+                        </>
+                    )}
+                    <button onClick={handleEnroll} className={styles.enrollButton} disabled={isEnrolled}>
+                        {isEnrolled ? "신청 완료" : "신청"}
+                    </button>
+                </div>
             </div>
-            <p><strong>도전 기간:</strong> {challenge.startDate} - {challenge.endDate}</p>
-            <p><strong>진행 상태:</strong> {status}</p>
-            <p><strong>현재 단계:</strong> {challenge.totalStep}</p>
-            {isAuthor && (
-                <>
-                    <button onClick={handleDelete} className="delete-button">삭제</button>
-                    <button onClick={() => navigate(`/editchallenge/${challenge.id}`)} className='edit-button'>수정</button>
-                </>
-            )}
-            <button onClick={handleEnroll} className="enroll-button" disabled={isEnrolled}>{isEnrolled ? "신청 완료" : "신청"}</button>
-        </div>
-        <div className="challenge-review">
-            <Review challengeAuthId={challengeId} />
-        </div>
+            <div className={styles.challengeReview}>
+                <Review challengeId={challengeId} />
+            </div>
         </>
     );
 };

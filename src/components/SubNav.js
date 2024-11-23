@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Nav.module.css';
-import Container from './Container';
+
 
 function getLinkStyle({ isActive }) {
     return {
@@ -9,7 +9,7 @@ function getLinkStyle({ isActive }) {
     };
 }
 
-function SubNav({ isLoggedIn, onLogout }) {
+function SubNav({ isLoggedIn }) {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isCategoryOpen, setCategoryOpen] = useState(false);
     const [isCommunityOpen, setCommunityOpen] = useState(false);
